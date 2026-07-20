@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abheet Patil — Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --bg: #0d0e11;
+            --card-bg: #16181d;
+            --card-border: #232730;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --radius: 12px;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 0 1.5rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 0 6rem 0;
+        }
+
+        /* Header / Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 4rem;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 5rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--accent-hover);
+            padding: 0.35rem 0.8rem;
+            border-radius: 99px;
+            font-size: 0.825rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 650px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            border-color: #374151;
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .expertise-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+        }
+
+        .expertise-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .expertise-item p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Writing Section */
+        .writing-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .writing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .writing-item:hover .writing-title {
+            color: var(--accent-hover);
+        }
+
+        .writing-title {
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .writing-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer & Contact */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding-top: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-box {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-box h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-link {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-hover);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header Navigation -->
+        <header>
+            <div class="logo">Abheet Patil</div>
+            <nav>
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="status-badge">
+                <span class="status-dot"></span> Available for new opportunities
+            </div>
+            <h1>I'm Abheet Patil, a Product Designer focusing on intuitive digital experiences.</h1>
+            <p>I shape complex problems into clear, elegant, and user-centered products — obsessing over details that
+                elevate everyday interactions.</p>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work">
+            <div class="section-title">
+                Selected Work
+                <span>03 Projects</span>
+            </div>
+            <div class="project-grid">
+
+                <a href="#" class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <h3 class="project-title">Design System Architecture</h3>
+                            <span>↗</span>
+                        </div>
+                        <p class="project-desc">A unified multi-platform UI component framework designed to scale across
+                            web and mobile applications.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Design Systems</span>
+                        <span class="tag">UX Research</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <h3 class="project-title">SaaS Analytics Dashboard</h3>
+                            <span>↗</span>
+                        </div>
+                        <p class="project-desc">Redesigning real-time data visualization workflows to improve
+                            decision-making efficiency for enterprise teams.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">UX/UI Design</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <h3 class="project-title">E-Commerce Checkout Flow</h3>
+                            <span>↗</span>
+                        </div>
+                        <p class="project-desc">Optimized payment and checkout interface that decreased cart abandonment
+                            by 18%.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Interaction Design</span>
+                        <span class="tag">Conversion UX</span>
+                        <span class="tag">Mobile Design</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise">
+            <div class="section-title">
+                Core Capabilities
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h3>Product Strategy</h3>
+                    <p>Defining scope, aligning user needs with business goals, and framing the right problem before
+                        building.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>UX/UI Design</h3>
+                    <p>Crafting clean, accessible, and functional user interfaces focused on visual clarity and
+                        usability.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Interaction Design</h3>
+                    <p>Designing micro-interactions, motion feel, and seamless state transitions to enrich user
+                        experience.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>User Research</h3>
+                    <p>Conducting user interviews, usability testing, and data analysis to ground design choices in
+                        facts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing / Notes Section -->
+        <section id="writing">
+            <div class="section-title">
+                Writing & Thoughts
+            </div>
+            <div class="writing-list">
+                <a href="#" class="writing-item">
+                    <span class="writing-title">Designing for edge cases before happy paths</span>
+                    <span class="writing-date">2026</span>
+                </a>
+                <a href="#" class="writing-item">
+                    <span class="writing-title">Why minimalism in UI requires maximum intent</span>
+                    <span class="writing-date">2025</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact & Footer Section -->
+        <footer id="contact">
+            <div class="contact-box">
+                <h2>Get in touch</h2>
+                <p>Always open to discussing product design opportunities, collaboration, or side ideas.</p>
+                <a href="mailto:patilabheet@gmail.com" class="email-link">patilabheet@gmail.com</a>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 Abheet Patil</div>
+                <div class="social-links">
+                    <a href="mailto:patilabheet@gmail.com">Email</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter/X</a>
+                    <a href="#">ReadCV</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
